@@ -61,6 +61,13 @@ import {
   ToolInput,
   ToolOutput,
 } from '@/components/ai-elements/tool';
+import {
+  WebPreview,
+  WebPreviewBody,
+  WebPreviewNavigation,
+  WebPreviewUrl,
+} from '@/components/ai-elements/web-preview';
+
 const models = [
   {
     name: 'GPT 4o',
@@ -71,7 +78,7 @@ const models = [
     value: 'deepseek/deepseek-r1',
   },
 ];
-const ChatBotDemo = () => {
+const ChatBot = () => {
   const [input, setInput] = useState('');
   const [model, setModel] = useState<string>(models[0].value);
   const [webSearch, setWebSearch] = useState(false);
@@ -212,6 +219,41 @@ const ChatBotDemo = () => {
                           return null;
                       }
                     }
+                    case 'tool-generate_ui': {
+                      const callId = part.toolCallId;
+                      switch (part.state) {
+                        case 'input-streaming':
+                        case 'input-available':
+                          return (
+                            <div key={`${message.id}-${i}`} className="flex flex-col items-center justify-center h-64 border rounded-lg bg-muted/50">
+                              <Loader />
+                              <p className="mt-4 text-muted-foreground">
+                                Generating UI...
+                              </p>
+                            </div>
+                          );
+                        case 'output-available':
+                          const output = part.output as { demo?: string };
+                          return (
+                            <div key={`${message.id}-${i}`} className="w-full h-[600px] border rounded-lg overflow-hidden my-4">
+                              <WebPreview defaultUrl={output.demo || ''}>
+                                <WebPreviewNavigation>
+                                  <WebPreviewUrl />
+                                </WebPreviewNavigation>
+                                <WebPreviewBody src={output.demo || ''} />
+                              </WebPreview>
+                            </div>
+                          );
+                        case 'output-error':
+                          return (
+                            <div key={`${message.id}-${i}`} className="p-4 text-red-500 border border-red-200 rounded-lg bg-red-50">
+                              Error generating UI: {part.errorText}
+                            </div>
+                          );
+                        default:
+                          return null;
+                      }
+                    }
                     default:
                       return null;
                   }
@@ -277,4 +319,4 @@ const ChatBotDemo = () => {
     </div>
   );
 };
-export default ChatBotDemo;
+export default ChatBot;

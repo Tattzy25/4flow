@@ -101,6 +101,9 @@ importers:
       use-stick-to-bottom:
         specifier: ^1.1.1
         version: 1.1.1(react@19.2.1)
+      v0-sdk:
+        specifier: ^0.15.3
+        version: 0.15.3
       zod:
         specifier: ^4.1.13
         version: 4.1.13
@@ -3508,6 +3511,10 @@ packages:
   uuid@11.1.0:
     resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
+
+  v0-sdk@0.15.3:
+    resolution: {integrity: sha512-5bjDWTt9OTdOWaT4iH0wtyi9Cji8R4woV+fYxsz1sfRFvi9GzZ0t1LwwIgphatSXhT2n9VjuTWeYjn3EVz0YKA==}
+    engines: {node: '>=22', pnpm: '>=9'}
 
   vfile-location@5.0.3:
     resolution: {integrity: sha512-5yXvWDEgqeiYiBe1lbxYF7UMAIm/IcopxMHrMQDq3nvKcjPKIhZklUKL+AE7J7uApI4kwe2snsK+eI6UTj9EHg==}
@@ -7657,6 +7664,8 @@ snapshots:
       react: 19.2.1
 
   uuid@11.1.0: {}
+
+  v0-sdk@0.15.3: {}
 
   vfile-location@5.0.3:
     dependencies:
