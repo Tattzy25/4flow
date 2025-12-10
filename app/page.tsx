@@ -41,6 +41,7 @@ import {
   type ToolUIPart,
 } from 'ai';
 import { CopyIcon, GlobeIcon, RefreshCcwIcon } from 'lucide-react';
+import { ThemeSwitcher } from '@/components/kibo-ui/theme-switcher';
 import {
   Source,
   Sources,
@@ -265,6 +266,9 @@ const ChatBotDemo = () => {
                   ))}
                 </PromptInputSelectContent>
               </PromptInputSelect>
+              <div className="pl-2">
+                <ThemeSwitcher className="" defaultValue="system" />
+              </div>
             </PromptInputTools>
             <PromptInputSubmit disabled={!input && !status} status={status} />
           </PromptInputFooter>
