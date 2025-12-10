@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { createClient } from 'v0-sdk';
 
 const v0 = createClient({
-  apiKey: process.env.AI_GATEWAY_API_KEY,
+  apiKey: process.env.V0_API_KEY,
 });
 
 // Allow streaming responses up to 30 seconds
